@@ -11,4 +11,8 @@ package com.rgirish2.assignment1.piece;
 public enum NormalPlayerOrdinal {
 	ONE,
 	TWO;
+	
+	public static int getOrdinal(NormalPlayerOrdinal ordinal) {
+		return ordinal.equals(ONE) ? 1 : 2;
+	}
 }

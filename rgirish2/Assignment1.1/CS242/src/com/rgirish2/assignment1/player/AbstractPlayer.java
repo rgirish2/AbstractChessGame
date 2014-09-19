@@ -28,8 +28,8 @@ public abstract class AbstractPlayer {
 	 * In case of 2 player game, we have this as ONE and TWO.
 	 * @return the ordinal for the player.
 	 */
-	public NormalPlayerOrdinal getOrdinal() {
-		return ordinal;
+	public int getOrdinal() {
+		return NormalPlayerOrdinal.getOrdinal(ordinal);
 	}
 	
 	public void setOrdinal(NormalPlayerOrdinal ordinal) {

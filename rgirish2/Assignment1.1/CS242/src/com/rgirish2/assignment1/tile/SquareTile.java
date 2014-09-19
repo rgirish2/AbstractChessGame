@@ -9,7 +9,7 @@ import com.rgirish2.assignment1.piece.AbstractTwoDimensionalPiece;
  */
 public class SquareTile extends AbstractTile {
 	
-	public SquareTile(AbstractTwoDimensionalPiece piece) {
-		super(piece);
+	public SquareTile(AbstractTwoDimensionalPiece piece, Colors color) {
+		super(piece, color);
 	}
 }

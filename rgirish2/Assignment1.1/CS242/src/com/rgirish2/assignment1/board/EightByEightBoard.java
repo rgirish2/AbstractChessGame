@@ -10,6 +10,7 @@ import com.rgirish2.assignment1.piece.NormalPieceSet;
 import com.rgirish2.assignment1.piece.PawnPiece;
 import com.rgirish2.assignment1.piece.QueenPiece;
 import com.rgirish2.assignment1.piece.RookPiece;
+import com.rgirish2.assignment1.tile.Colors;
 import com.rgirish2.assignment1.tile.SquareTile;
 
 /**
@@ -36,43 +37,58 @@ public class EightByEightBoard extends AbstractSquareBoard {
 	 */
 	@Override
 	public void buildBoard(List<AbstractPieceSet> pieceSet) {
+		boolean flag = false;
+		for (int i = 0; i < 8; i++) {
+			Colors color = Colors.WHITE;
+			if (flag) {
+				color = Colors.BLACK;
+				flag = !flag;
+			} else {
+				flag = !flag;
+			}
+			for (int j = 0; j < 8; j++) {
+				this.board[j][i] = new SquareTile(null, color);
+				color = color.equals(Colors.BLACK) ? Colors.WHITE : Colors.BLACK;
+			}
+		}
+		
 		for (AbstractPieceSet onePieceSet : pieceSet) {
 			if (onePieceSet instanceof NormalPieceSet) {
 				NormalPieceSet asNormalPieceSet = (NormalPieceSet)onePieceSet;
 				for (PawnPiece onePawn : asNormalPieceSet.getPawnList()) {
 					int x = onePawn.getPosX();
 					int y = onePawn.getPosY();
-					this.board[x][y] = new SquareTile(onePawn);
+					this.board[x][y].setPiece(onePawn);
 				}
 				
 				for (RookPiece oneRook : asNormalPieceSet.getRookList()) {
 					int x = oneRook.getPosX();
 					int y = oneRook.getPosY();
-					this.board[x][y] = new SquareTile(oneRook);
+					this.board[x][y].setPiece(oneRook);
 				}
 				
 				for (KnightPiece oneKnight : asNormalPieceSet.getKnightList()) {
 					int x = oneKnight.getPosX();
 					int y = oneKnight.getPosY();
-					this.board[x][y] = new SquareTile(oneKnight);
+					this.board[x][y].setPiece(oneKnight);
 				}
 				
 				for (BishopPiece oneBishop : asNormalPieceSet.getBishopList()) {
 					int x = oneBishop.getPosX();
 					int y = oneBishop.getPosY();
-					this.board[x][y] = new SquareTile(oneBishop);
+					this.board[x][y].setPiece(oneBishop);
 				}
 				
 				for (QueenPiece oneQueen : asNormalPieceSet.getQueenList()) {
 					int x = oneQueen.getPosX();
 					int y = oneQueen.getPosY();
-					this.board[x][y] = new SquareTile(oneQueen);
+					this.board[x][y].setPiece(oneQueen);
 				}
 				
 				for (KingPiece oneKing : asNormalPieceSet.getKingList()) {
 					int x = oneKing.getPosX();
 					int y = oneKing.getPosY();
-					this.board[x][y] = new SquareTile(oneKing);
+					this.board[x][y].setPiece(oneKing);
 				}
 			} else {
 				throw new IllegalArgumentException("This pieceSet is not supported at this moment. Please try again later.");
