@@ -17,25 +17,46 @@ import com.rgirish2.assignment1.player.NormalChessPlayer;
  *
  */
 public class TwoDimensionalChessGame extends AbstractGame {
+	private final int playerCount = 2;
+	
+	private AbstractPlayer [] players;
+	private AbstractTwoDimensionalBoard chessBoard;
+	private List<AbstractPieceSet> allPieceSet;
+	
+	public TwoDimensionalChessGame(String [] playerNames) {
+		this.players = new NormalChessPlayer[playerCount];
+		this.chessBoard = new EightByEightBoard();
+		this.allPieceSet = new ArrayList<AbstractPieceSet>();
+		
+		for (int i = 0; i < playerCount; i++) {
+			players[i] = new NormalChessPlayer(playerNames[i], i + 1);
+			allPieceSet.add(players[i].getPieceSet());
+		}
+		this.chessBoard.buildBoard(this.allPieceSet);
+	}
+	
+	public int getPlayerCount() {
+		return this.playerCount;
+	}
+	
+	public AbstractTwoDimensionalBoard getBoard() {
+		return this.chessBoard;
+	}
 	
 	public static void main (String [] args) {
 		System.out.println("Welcome to my world of Chess!!");
 //		boolean isGameRunning = true;
+
+		String [] names = new String[2];
 		
-		int playerCount = 2;
+		Scanner in = new Scanner(System.in);
 		
-		AbstractPlayer [] players = new NormalChessPlayer[playerCount];
-		AbstractTwoDimensionalBoard chessBoard = new EightByEightBoard();
-		List<AbstractPieceSet> allPieceSet = new ArrayList<AbstractPieceSet>();
+		for (int i = 0; i < 2; i++)
+			names[i] = in.nextLine();
 		
-		for (int i = 0; i < playerCount; i++) {
-			players[i] = new NormalChessPlayer("", i + 1);
-			allPieceSet.add(players[i].getPieceSet());
-		}
+		TwoDimensionalChessGame game = new TwoDimensionalChessGame(names);
 		
-		chessBoard.buildBoard(allPieceSet);
-		
-		System.out.println(chessBoard);
+		System.out.println(game.chessBoard);
 		/*		
 		while (isGameRunning) {
 			
@@ -53,50 +74,50 @@ public class TwoDimensionalChessGame extends AbstractGame {
 */		
 		System.out.println("=======================================================================================================");
 		
-		System.out.println(chessBoard.moveTile(4, 1, 4, 3));
+		System.out.println(game.chessBoard.moveTile(4, 1, 4, 3));
 		
-		System.out.println(chessBoard);
+		System.out.println(game.chessBoard);
 		System.out.println("=======================================================================================================");
 		
-		System.out.println(chessBoard.moveTile(4, 0, 4, 1));
+		System.out.println(game.chessBoard.moveTile(4, 0, 4, 1));
 		
-		System.out.println(chessBoard);
+		System.out.println(game.chessBoard);
 		System.out.println("=======================================================================================================");
 		
-		System.out.println(chessBoard.moveTile(4, 1, 4, 2));
+		System.out.println(game.chessBoard.moveTile(4, 1, 4, 2));
 		
-		System.out.println(chessBoard);
+		System.out.println(game.chessBoard);
 		System.out.println("=======================================================================================================");
 		
-		System.out.println(chessBoard.moveTile(4, 2, 3, 2));
+		System.out.println(game.chessBoard.moveTile(4, 2, 3, 2));
 		
-		System.out.println(chessBoard);
+		System.out.println(game.chessBoard);
 		System.out.println("=======================================================================================================");
 		
-		System.out.println(chessBoard.moveTile(3, 2, 2, 2));
+		System.out.println(game.chessBoard.moveTile(3, 2, 2, 2));
 		
-		System.out.println(chessBoard);
+		System.out.println(game.chessBoard);
 		System.out.println("=======================================================================================================");
 		
-		System.out.println(chessBoard.moveTile(2, 2, 1, 3));
+		System.out.println(game.chessBoard.moveTile(2, 2, 1, 3));
 		
-		System.out.println(chessBoard);
+		System.out.println(game.chessBoard);
 		System.out.println("=======================================================================================================");
 		
-		System.out.println(chessBoard.moveTile(1, 3, 0, 4));
+		System.out.println(game.chessBoard.moveTile(1, 3, 0, 4));
 		
-		System.out.println(chessBoard);
+		System.out.println(game.chessBoard);
 		System.out.println("=======================================================================================================");
 		
-		System.out.println(chessBoard.moveTile(0, 4, 0, 5));
+		System.out.println(game.chessBoard.moveTile(0, 4, 0, 5));
 		
-		System.out.println(chessBoard);
+		System.out.println(game.chessBoard);
 		
 		System.out.println("=======================================================================================================");
 		
-		System.out.println(chessBoard.moveTile(0, 5, 0, 6));
+		System.out.println(game.chessBoard.moveTile(0, 5, 0, 6));
 		
-		System.out.println(chessBoard);
+		System.out.println(game.chessBoard);
 		System.out.println("=======================================================================================================");
 		
 		return;
