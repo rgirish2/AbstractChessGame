@@ -11,5 +11,7 @@ public enum PieceType {
 	KNIGHT,
 	KING,
 	QUEEN,
-	PAWN
+	PAWN,
+	ABRA,
+	KADABRA
 }
