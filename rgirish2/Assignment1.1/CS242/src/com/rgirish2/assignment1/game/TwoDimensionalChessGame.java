@@ -36,11 +36,11 @@ public class TwoDimensionalChessGame extends AbstractGame {
 		chessBoard.buildBoard(allPieceSet);
 		
 		System.out.println(chessBoard);
-/*		
+		/*		
 		while (isGameRunning) {
 			
 		}
-*/	
+	
 		Scanner in = new Scanner(System.in);
 		int newX = in.nextInt();
 		int newY = in.nextInt();
@@ -50,10 +50,54 @@ public class TwoDimensionalChessGame extends AbstractGame {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+*/		
+		System.out.println("=======================================================================================================");
+		
+		System.out.println(chessBoard.moveTile(4, 1, 4, 3));
+		
+		System.out.println(chessBoard);
+		System.out.println("=======================================================================================================");
+		
+		System.out.println(chessBoard.moveTile(4, 0, 4, 1));
+		
+		System.out.println(chessBoard);
+		System.out.println("=======================================================================================================");
+		
+		System.out.println(chessBoard.moveTile(4, 1, 4, 2));
+		
+		System.out.println(chessBoard);
+		System.out.println("=======================================================================================================");
+		
+		System.out.println(chessBoard.moveTile(4, 2, 3, 2));
+		
+		System.out.println(chessBoard);
+		System.out.println("=======================================================================================================");
+		
+		System.out.println(chessBoard.moveTile(3, 2, 2, 2));
+		
+		System.out.println(chessBoard);
+		System.out.println("=======================================================================================================");
+		
+		System.out.println(chessBoard.moveTile(2, 2, 1, 3));
+		
+		System.out.println(chessBoard);
+		System.out.println("=======================================================================================================");
+		
+		System.out.println(chessBoard.moveTile(1, 3, 0, 4));
+		
+		System.out.println(chessBoard);
+		System.out.println("=======================================================================================================");
+		
+		System.out.println(chessBoard.moveTile(0, 4, 0, 5));
+		
+		System.out.println(chessBoard);
 		
 		System.out.println("=======================================================================================================");
 		
+		System.out.println(chessBoard.moveTile(0, 5, 0, 6));
+		
 		System.out.println(chessBoard);
+		System.out.println("=======================================================================================================");
 		
 		return;
 	}

@@ -30,12 +30,16 @@ public class EightByEightBoardGUI extends JFrame {
 	public void setChessPieces(AbstractTwoDimensionalBoard board) {
         System.out.println("New Chess Board");
         
-        String [] columnNames = {"1", "2", "3", "4", "5", "6", "7", "8"};
+        String [] columnNames = new String [board.getDimensionOne()];
+        for (int i = 1; i <= board.getDimensionOne(); i++) {
+        	columnNames[i - 1] = Integer.toString(i);
+        }
         
         JTable jTable = new JTable(board.getBoard(), columnNames);
         
         this.board.add(jTable);
         
+        this.board.pack();
         this.board.setVisible(true);
 	}
 	
