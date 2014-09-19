@@ -14,11 +14,13 @@ public abstract class AbstractTile {
 	private AbstractTwoDimensionalPiece piece;
 	private boolean isMarked;
 	private boolean isOccupied;
+	private final Colors color;
 	
-	public AbstractTile(AbstractTwoDimensionalPiece piece) {
+	public AbstractTile(AbstractTwoDimensionalPiece piece, Colors color) {
 		this.piece = piece;
-		this.isOccupied = true;
+		this.isOccupied = piece == null ? false : true;
 		this.isMarked = false;
+		this.color = color;
 	}
 	
 	/**
@@ -31,6 +33,7 @@ public abstract class AbstractTile {
 
 	public void setPiece(AbstractTwoDimensionalPiece piece) {
 		this.piece = piece;
+		this.isOccupied = true;
 	}
 	
 	/**
@@ -47,6 +50,10 @@ public abstract class AbstractTile {
 		this.isMarked = isMarked;
 	}
 
+	/**
+	 * Returns whether the tile isOccupied or not.
+	 * @return True if the tile is occupied. False otherwise.
+	 */
 	public boolean isOccupied() {
 		return isOccupied;
 	}
@@ -55,8 +62,16 @@ public abstract class AbstractTile {
 		this.isOccupied = isOccupied;
 	}
 	
+	/**
+	 * Returns the color of this tile.
+	 * @return The color of this tile.
+	 */
+	public Colors getColor() {
+		return this.color;
+	}
+	
 	@Override
 	public String toString() {
-		return this.piece.toString();
+		return this.piece == null? "X" : this.piece.toString();
 	}
 }
