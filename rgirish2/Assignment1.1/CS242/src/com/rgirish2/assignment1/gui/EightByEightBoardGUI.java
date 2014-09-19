@@ -1,17 +1,12 @@
 package com.rgirish2.assignment1.gui;
 
 import java.awt.FlowLayout;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JTable;
 
 import com.rgirish2.assignment1.board.AbstractTwoDimensionalBoard;
-import com.rgirish2.assignment1.board.EightByEightBoard;
-import com.rgirish2.assignment1.piece.AbstractPieceSet;
-import com.rgirish2.assignment1.player.AbstractPlayer;
-import com.rgirish2.assignment1.player.NormalChessPlayer;
+import com.rgirish2.assignment1.game.TwoDimensionalChessGame;
 
 @SuppressWarnings("serial")
 public class EightByEightBoardGUI extends JFrame {
@@ -27,8 +22,9 @@ public class EightByEightBoardGUI extends JFrame {
         this.board.setLayout(new FlowLayout());
 	}
 	
-	public void setChessPieces(AbstractTwoDimensionalBoard board) {
+	public void setChessPieces(TwoDimensionalChessGame game) {
         System.out.println("New Chess Board");
+        AbstractTwoDimensionalBoard board = game.getBoard(); 
         
         String [] columnNames = new String [board.getDimensionOne()];
         for (int i = 1; i <= board.getDimensionOne(); i++) {
@@ -44,21 +40,12 @@ public class EightByEightBoardGUI extends JFrame {
 	}
 	
 	public static void main(String [] args) {
-		int playerCount = 2;
+		String [] names = {"Rishi", "Neo"};
 		
-		AbstractPlayer [] players = new NormalChessPlayer[playerCount];
-		AbstractTwoDimensionalBoard chessBoard = new EightByEightBoard();
-		List<AbstractPieceSet> allPieceSet = new ArrayList<AbstractPieceSet>();
-		
-		for (int i = 0; i < playerCount; i++) {
-			players[i] = new NormalChessPlayer("", i + 1);
-			allPieceSet.add(players[i].getPieceSet());
-		}
-		
-		chessBoard.buildBoard(allPieceSet);
+		TwoDimensionalChessGame game = new TwoDimensionalChessGame(names);
 		
 		EightByEightBoardGUI chessBoardGUI = new EightByEightBoardGUI();
 		
-		chessBoardGUI.setChessPieces(chessBoard);
+		chessBoardGUI.setChessPieces(game);
 	}
 }
