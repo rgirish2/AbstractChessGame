@@ -6,7 +6,7 @@ import com.rgirish2.assignment1.piece.AbstractTwoDimensionalPiece;
 import com.rgirish2.assignment1.tile.SquareTile;
 
 /**
- * Class representing any kind of two dimensional chess boards. 
+ * Class representing any kind of two dimensional chess boards comprising of square tiles. 
  * @author Rishi Girish (rgirish2ATillinoisDOTedu)
  *
  */
