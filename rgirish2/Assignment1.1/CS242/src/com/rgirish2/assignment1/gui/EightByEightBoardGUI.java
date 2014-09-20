@@ -1,41 +1,90 @@
 package com.rgirish2.assignment1.gui;
 
-import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridBagLayout;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JTable;
+import javax.swing.JPanel;
 
 import com.rgirish2.assignment1.board.AbstractTwoDimensionalBoard;
 import com.rgirish2.assignment1.game.TwoDimensionalChessGame;
+import com.rgirish2.assignment1.tile.SquareTile;
 
 @SuppressWarnings("serial")
 public class EightByEightBoardGUI extends JFrame {
 	private JFrame board;
+	private JPanel panel;
 	
 	public EightByEightBoardGUI() {
         this.board = new JFrame("8 X 8 Chess Board");
-        
-        this.board.setSize(800, 800);
+		this.panel = new JPanel();
+		
+        this.board.setSize(1200, 1200);
         
         this.board.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        this.board.setLayout(new FlowLayout());
+		this.panel.setLayout(new GridBagLayout());
+		this.board.setContentPane(panel);
 	}
 	
 	public void setChessPieces(TwoDimensionalChessGame game) {
         System.out.println("New Chess Board");
         AbstractTwoDimensionalBoard board = game.getBoard(); 
+
+        SquareTile [][] tiles = board.getBoard();       
+        Character c = new Character((char)2654);
         
-        String [] columnNames = new String [board.getDimensionOne()];
-        for (int i = 1; i <= board.getDimensionOne(); i++) {
-        	columnNames[i - 1] = Integer.toString(i);
-        }
+        JButton king = new JButton("\u2654");
+        king.setFont(new Font("King", Font.BOLD, 50));
         
-        JTable jTable = new JTable(board.getBoard(), columnNames);
+        JButton queen = new JButton("\u2655");
+        queen.setFont(new Font("Queen", Font.BOLD, 50));
         
-        this.board.add(jTable);
+        JButton rook = new JButton("\u2656");
+        rook.setFont(new Font("Rook", Font.BOLD, 50));
         
-        this.board.pack();
+        JButton bishop = new JButton("\u2657");
+        bishop.setFont(new Font("Bishop", Font.BOLD, 50));
+        
+        JButton knight = new JButton("\u2658");
+        knight.setFont(new Font("Knight", Font.BOLD, 50));
+        
+        JButton pawn = new JButton("\u2659");
+        pawn.setFont(new Font("Pawn", Font.BOLD, 50));
+        
+        JButton Bking = new JButton("\u265A");
+        Bking.setFont(new Font("King", Font.BOLD, 50));
+        
+        JButton Bqueen = new JButton("\u265B");
+        Bqueen.setFont(new Font("Queen", Font.BOLD, 50));
+        
+        JButton Brook = new JButton("\u265C");
+        Brook.setFont(new Font("Rook", Font.BOLD, 50));
+        
+        JButton Bbishop = new JButton("\u265D");
+        Bbishop.setFont(new Font("Bishop", Font.BOLD, 50));
+        
+        JButton Bknight = new JButton("\u265E");
+        Bknight.setFont(new Font("Knight", Font.BOLD, 50));
+        
+        JButton Bpawn = new JButton("\u265F");
+        Bpawn.setFont(new Font("Pawn", Font.BOLD, 50));
+        
+        this.panel.add(king);
+        this.panel.add(queen);
+        this.panel.add(rook);
+        this.panel.add(bishop);
+        this.panel.add(knight);
+        this.panel.add(pawn);
+        
+        this.panel.add(Bking);
+        this.panel.add(Bqueen);
+        this.panel.add(Brook);
+        this.panel.add(Bbishop);
+        this.panel.add(Bknight);
+        this.panel.add(Bpawn);
+
         this.board.setVisible(true);
 	}
 	
