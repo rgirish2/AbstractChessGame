@@ -10,7 +10,7 @@ import com.rgirish2.assignment1.board.AbstractTwoDimensionalBoard;
 public class RookPiece extends AbstractTwoDimensionalPiece {
 
 	public RookPiece(String playerName, int posX, int posY, NormalPlayerOrdinal ordinal) {
-		super(playerName, posX, posY, PieceType.ROOK, ordinal);
+		super(playerName, posX, posY, PieceType.ROOK, ordinal, ordinal.equals(NormalPlayerOrdinal.ONE) ? PiecesUnicode.WHITEROOK : PiecesUnicode.BLACKROOK);
 	}
 	
 	/**

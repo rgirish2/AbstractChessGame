@@ -11,7 +11,7 @@ import com.rgirish2.assignment1.board.AbstractTwoDimensionalBoard;
 public class AbraPiece extends AbstractTwoDimensionalPiece {
 
 	public AbraPiece(String playerName, int posX, int posY, NormalPlayerOrdinal ordinal) {
-		super(playerName, posX, posY, PieceType.ABRA, ordinal);
+		super(playerName, posX, posY, PieceType.ABRA, ordinal, null);
 	}
 
 	/**

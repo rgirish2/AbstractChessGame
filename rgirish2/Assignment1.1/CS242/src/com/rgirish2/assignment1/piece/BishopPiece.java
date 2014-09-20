@@ -10,7 +10,7 @@ import com.rgirish2.assignment1.board.AbstractTwoDimensionalBoard;
 public class BishopPiece extends AbstractTwoDimensionalPiece {
 
 	public BishopPiece(String playerName, int posX, int posY, NormalPlayerOrdinal ordinal) {
-		super(playerName, posX, posY, PieceType.BISHOP, ordinal);
+		super(playerName, posX, posY, PieceType.BISHOP, ordinal, ordinal.equals(NormalPlayerOrdinal.ONE) ? PiecesUnicode.WHITEBISHOP : PiecesUnicode.BLACKBISHOP);
 	}
 	
 	/**

@@ -11,7 +11,7 @@ import com.rgirish2.assignment1.board.AbstractTwoDimensionalBoard;
 public class KadabraPiece extends AbstractTwoDimensionalPiece {
 
 	public KadabraPiece(String playerName, int posX, int posY, NormalPlayerOrdinal ordinal) {
-		super(playerName, posX, posY, PieceType.KADABRA, ordinal);
+		super(playerName, posX, posY, PieceType.KADABRA, ordinal, null);
 	}
 
 	/**
