@@ -65,22 +65,32 @@ public abstract class AbstractTwoDimensionalBoard extends AbstractBoard {
 	 * @param newX The new X position of the tile.
 	 * @param newY The new Y position of the tile.
 	 * @throws Exception Throws exception on invalid moves.
-	 */
-	
+	 */	
 	//TODO: Implement custom exception handling and propagating the exception upstream. Add better exception messages.
 	public boolean moveTile (int oldX, int oldY, int newX, int newY) {
 		if (this.board == null || this.board[oldX][oldY] != null) {
 			AbstractTwoDimensionalPiece piece = board[oldX][oldY].getPiece();
 			if (piece != null) {
-				if (piece.isValidMove(this, newX, newY)) {
-					this.board[newX][newY] = this.board[oldX][oldY];
-					this.board[newX][newY].setMarked(false);
-					this.board[newX][newY].getPiece().setPosX(newX);
-					this.board[newX][newY].getPiece().setPosY(newY);
-					this.board[oldX][oldY] = null;
-					return true;
-				} else {
-//					throw new Exception("Incorrect movement for the piece.");
+				try {
+					if (piece.isValidMove(this, newX, newY)) {
+						piece.setPosX(newX);
+						piece.setPosY(newY);
+						
+						this.board[newX][newY].setPiece(piece);
+						this.board[newX][newY].setMarked(false);
+						this.board[newX][newY].setOccupied(true);
+						
+						this.board[oldX][oldY].setPiece(null);
+						this.board[oldX][oldY].setMarked(false);
+						this.board[oldX][oldY].setOccupied(false);
+						
+						piece = null;
+						return true;
+					} else {
+//						throw new Exception("Incorrect movement for the piece.");
+						return false;
+					}
+				} catch (NullPointerException e) {
 					return false;
 				}
 			} else {

@@ -65,7 +65,7 @@ public abstract class AbstractTwoDimensionalPiece extends AbstractPiece {
 	}
 	
 	/**
-	 * Movement helper function. This function is called by the move to verify whether the movement requested is valid.
+	 * Movement helper function. This function is called by the board to verify whether the movement requested is valid.
 	 * @param board The board on which this movement needs to be made.
 	 * @param newPosX The new X position in this 2 dimensional grid.
 	 * @param newPosY The new Y position in this 2 dimensional grid.

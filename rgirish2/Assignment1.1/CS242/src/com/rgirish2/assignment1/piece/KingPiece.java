@@ -1,6 +1,7 @@
 package com.rgirish2.assignment1.piece;
 
 import com.rgirish2.assignment1.board.AbstractTwoDimensionalBoard;
+import com.rgirish2.assignment1.movementValidity.TwoDimensionMovementsValidator;
 
 /**
  * A chess piece which is of type KING of the normal chess piece.
@@ -22,27 +23,33 @@ public class KingPiece extends AbstractTwoDimensionalPiece {
 	 */
 	@Override
 	public boolean isValidMove(AbstractTwoDimensionalBoard board, int newPosX, int newPosY) {
-		if (board.getDimensionCount() != 2) {
-			return false;
-		} else if (newPosX < 0 || newPosX > board.getDimensionOne() || newPosY < 0 || newPosY > board.getDimensionTwo()){
-			return false;
-		} else if (newPosX == this.getPosX() && newPosY == this.getPosY()) {
-			return false;
-		} else if (board.getBoard()[newPosX][newPosY] != null && board.getBoard()[newPosX][newPosY].isMarked()) {
+		
+		if (!TwoDimensionMovementsValidator.isWithinRange(board, this.getPosX(), this.getPosY(), newPosX, newPosY)) {
 			return false;
 		} else if (isCastlingMove(board, newPosX, newPosY)) {
 			return true;
 		} else {
-			int diffX = newPosX - this.getPosX();
-			int diffY = newPosY - this.getPosY();
+			int diffX = Math.abs(newPosX - this.getPosX());
+			int diffY = Math.abs(newPosY - this.getPosY());
 			
-			if (Math.abs(diffX) <= 1 && Math.abs(diffY) <= 1) {
-				if (board.getBoard()[newPosX][newPosY] == null || board.getBoard()[newPosX][newPosY].getPiece().getOrdinal() != this.getOrdinal()) {		// Check whether the piece at this this tile is not null before dereferencing it.
-					return true;
+			if (diffX == 1 && diffY == 1) {
+				if (!board.getBoard()[newPosX][newPosY].isMarked()) {
+					if (board.getBoard()[newPosX][newPosY].getPiece() != null) {
+						if (board.getBoard()[newPosX][newPosY].getPiece().getOrdinal() != this.getOrdinal()) {
+							return true;
+						} else {
+							return false;
+						}
+					} else {
+						return true;
+					}
+				} else {
+					return false;
 				}
+			} else {
+				return false;
 			}
 		}
-		return false;
 	}
 	
 	/**

@@ -2,7 +2,6 @@ package com.rgirish2.assignment1.game;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import com.rgirish2.assignment1.board.AbstractTwoDimensionalBoard;
 import com.rgirish2.assignment1.board.EightByEightBoard;
@@ -19,9 +18,9 @@ import com.rgirish2.assignment1.player.NormalChessPlayer;
 public class TwoDimensionalChessGame extends AbstractGame {
 	private final int playerCount = 2;
 	
-	private AbstractPlayer [] players;
+	private final AbstractPlayer [] players;
+	private final List<AbstractPieceSet> allPieceSet;
 	private AbstractTwoDimensionalBoard chessBoard;
-	private List<AbstractPieceSet> allPieceSet;
 	
 	public TwoDimensionalChessGame(String [] playerNames) {
 		this.players = new NormalChessPlayer[playerCount];
@@ -35,43 +34,44 @@ public class TwoDimensionalChessGame extends AbstractGame {
 		this.chessBoard.buildBoard(this.allPieceSet);
 	}
 	
+	/**
+	 * The number of players playing the game.
+	 * @return The number of players playing the game.
+	 */
 	public int getPlayerCount() {
 		return this.playerCount;
 	}
 	
+	/**
+	 * The chess board the game is being played on.
+	 * @return The 2 dimensional chess board.
+	 */
 	public AbstractTwoDimensionalBoard getBoard() {
 		return this.chessBoard;
 	}
 	
-	public static void main (String [] args) {
-		System.out.println("Welcome to my world of Chess!!");
-//		boolean isGameRunning = true;
+	/**
+	 * Request to move a chess piece on this 2-D chess board.
+	 * @param curPosX The current X position of the chess piece.
+	 * @param curPosY The current Y position of the chess piece.
+	 * @param newPosX The new X position of the chess piece.
+	 * @param newPosY The new Y position of the chess piece.
+	 * @return True if the move was successful, False otherwise.
+	 */
+	public boolean movePiece(int curPosX, int curPosY, int newPosX, int newPosY) {
+		boolean isPossible = this.chessBoard.moveTile(curPosX, curPosY, newPosX, newPosY);
+		return isPossible;
+	}
 
-		String [] names = new String[2];
+//	public static void main (String [] args) {
+//		System.out.println("Welcome to my world of Chess!!");
+//		String [] names = {"rishi", "girish"};
+//	
+//		TwoDimensionalChessGame game = new TwoDimensionalChessGame(names);
+//		
+//		System.out.println(game.getBoard());
 		
-		Scanner in = new Scanner(System.in);
-		
-		for (int i = 0; i < 2; i++)
-			names[i] = in.nextLine();
-		
-		TwoDimensionalChessGame game = new TwoDimensionalChessGame(names);
-		
-		System.out.println(game.chessBoard);
-		/*		
-		while (isGameRunning) {
-			
-		}
-	
-		Scanner in = new Scanner(System.in);
-		int newX = in.nextInt();
-		int newY = in.nextInt();
-		
-		try {
-			chessBoard.moveTile(3, 1, newX, newY);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-*/		
+/*		
 		System.out.println("=======================================================================================================");
 		
 		System.out.println(game.chessBoard.moveTile(4, 1, 4, 3));
@@ -119,7 +119,7 @@ public class TwoDimensionalChessGame extends AbstractGame {
 		
 		System.out.println(game.chessBoard);
 		System.out.println("=======================================================================================================");
-		
-		return;
-	}
+*/		
+//		return;
+//	}
 }
