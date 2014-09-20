@@ -1,6 +1,7 @@
 package com.rgirish2.assignment1.piece;
 
 import com.rgirish2.assignment1.board.AbstractTwoDimensionalBoard;
+import com.rgirish2.assignment1.movementValidity.TwoDimensionMovementsValidator;
 
 /**
  * A chess piece which is of type KNIGHT of the normal chess piece.
@@ -22,27 +23,26 @@ public class KnightPiece extends AbstractTwoDimensionalPiece {
 	 */
 	@Override
 	public boolean isValidMove(AbstractTwoDimensionalBoard board, int newPosX, int newPosY) {
-		if (board.getDimensionCount() != 2) {
-			return false;
-		} else if (newPosX < 0 || newPosX > board.getDimensionOne() || newPosY < 0 || newPosY > board.getDimensionTwo()){
-			return false;
-		} else if (newPosX == this.getPosX() && newPosY == this.getPosY()) {
-			return false;
-		} else {
+		if (TwoDimensionMovementsValidator.isWithinRange(board, this.getPosX(), this.getPosY(), newPosX, newPosY)) {
 			int diffX = Math.abs(newPosX - this.getPosX());
 			int diffY = Math.abs(newPosY - this.getPosY());
 			
-			if ((diffX != 1 && diffY != 2) || (diffX != 2 && diffY != 1)) {
+			if ((diffX == 1 && diffY == 2) || (diffX == 2 && diffY == 1)) {
+				AbstractTwoDimensionalPiece piece = board.getBoard()[newPosX][newPosY].getPiece();
+				if (piece != null) {
+					if (!piece.getOrdinal().equals(this.getOrdinal())) {
+						return true;
+					} else {
+						return false;
+					}
+				} else {
+					return true;
+				}
+			} else {
 				return false;
 			}
-			
-			AbstractTwoDimensionalPiece piece = board.getBoard()[newPosX][newPosY].getPiece();
-			if (piece != null) {
-				if (piece.getOrdinal().equals(this.getOrdinal())) {
-					return false;
-				}
-			}
-			return true;
+		} else {
+			return false;
 		}
 	}
 }

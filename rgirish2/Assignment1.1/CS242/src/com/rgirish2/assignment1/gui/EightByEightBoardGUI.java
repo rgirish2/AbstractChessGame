@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 
 import com.rgirish2.assignment1.board.AbstractTwoDimensionalBoard;
 import com.rgirish2.assignment1.game.TwoDimensionalChessGame;
+import com.rgirish2.assignment1.piece.AbstractTwoDimensionalPiece;
+import com.rgirish2.assignment1.tile.AbstractTile;
 import com.rgirish2.assignment1.tile.SquareTile;
 
 @SuppressWarnings("serial")
@@ -20,7 +22,7 @@ public class EightByEightBoardGUI extends JFrame {
         this.board = new JFrame("8 X 8 Chess Board");
 		this.panel = new JPanel();
 		
-        this.board.setSize(1200, 1200);
+        this.board.setSize(2000, 1200);
         
         this.board.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -32,9 +34,26 @@ public class EightByEightBoardGUI extends JFrame {
         System.out.println("New Chess Board");
         AbstractTwoDimensionalBoard board = game.getBoard(); 
 
-        SquareTile [][] tiles = board.getBoard();       
-        Character c = new Character((char)2654);
-        
+        SquareTile [][] tiles = board.getBoard();
+        for (int x = 0 ; x < board.getDimensionOne(); x++) {
+        	for (int y = 0; y < board.getDimensionTwo(); y++) {
+        		if (tiles[y][x].getPiece() != null) {
+        			AbstractTile tile = tiles[y][x];
+        			AbstractTwoDimensionalPiece piece = tile.getPiece();
+        			
+        			JButton button = new JButton(piece.getUnicodeValue());
+        			button.setFont(new Font("Piece", Font.BOLD, 50));
+        			button.setBackground(tile.getColor());
+        			this.panel.add(button);
+        		} else {
+        			AbstractTile tile = tiles[y][x];
+        			JButton button = new JButton(x + ", " + y);
+        			button.setBackground(tile.getColor());
+        			this.panel.add(button);
+        		}
+        	}
+        }
+/*        
         JButton king = new JButton("\u2654");
         king.setFont(new Font("King", Font.BOLD, 50));
         
@@ -84,7 +103,7 @@ public class EightByEightBoardGUI extends JFrame {
         this.panel.add(Bbishop);
         this.panel.add(Bknight);
         this.panel.add(Bpawn);
-
+*/
         this.board.setVisible(true);
 	}
 	

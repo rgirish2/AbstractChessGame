@@ -1,5 +1,7 @@
 package com.rgirish2.assignment1.tile;
 
+import java.awt.Color;
+
 import com.rgirish2.assignment1.piece.AbstractTwoDimensionalPiece;
 
 /**
@@ -14,9 +16,9 @@ public abstract class AbstractTile {
 	private AbstractTwoDimensionalPiece piece;
 	private boolean isMarked;
 	private boolean isOccupied;
-	private final Colors color;
+	private final Color color;
 	
-	public AbstractTile(AbstractTwoDimensionalPiece piece, Colors color) {
+	public AbstractTile(AbstractTwoDimensionalPiece piece, Color color) {
 		this.piece = piece;
 		this.isOccupied = piece == null ? false : true;
 		this.isMarked = false;
@@ -66,12 +68,12 @@ public abstract class AbstractTile {
 	 * Returns the color of this tile.
 	 * @return The color of this tile.
 	 */
-	public Colors getColor() {
+	public Color getColor() {
 		return this.color;
 	}
 	
 	@Override
 	public String toString() {
-		return this.piece == null? "X" : this.piece.toString();
+		return this.piece == null? "\tX" : this.piece.toString();
 	}
 }

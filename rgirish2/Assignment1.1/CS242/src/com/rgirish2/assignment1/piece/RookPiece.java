@@ -1,6 +1,7 @@
 package com.rgirish2.assignment1.piece;
 
 import com.rgirish2.assignment1.board.AbstractTwoDimensionalBoard;
+import com.rgirish2.assignment1.movementValidity.TwoDimensionMovementsValidator;
 
 /**
  * A chess piece which is of type ROOK of the normal chess piece.
@@ -22,65 +23,16 @@ public class RookPiece extends AbstractTwoDimensionalPiece {
 	 */
 	@Override
 	public boolean isValidMove(AbstractTwoDimensionalBoard board, int newPosX, int newPosY) {
-		if (board.getDimensionCount() != 2) {
-			return false;
-		} else if (newPosX < 0 || newPosX > board.getDimensionOne() || newPosY < 0 || newPosY > board.getDimensionTwo()){
-			return false;
-		} else if (newPosX == this.getPosX() && newPosY == this.getPosY()) {
-			return false;
-		} else if (isCastlingMove(board, newPosX, newPosY)) {
+		if (isCastlingMove(board, newPosX, newPosY)) {
 			return true;
 		} else {
-			int diffX = Math.abs(newPosX - this.getPosX());
-			int diffY = Math.abs(newPosY - this.getPosY());
+			int curPosX = this.getPosX();
+			int curPosY = this.getPosY();
 			
-			if (diffX > 0 && diffY > 0) {
-				return false;
-			}
+			boolean isValidHorizontal = TwoDimensionMovementsValidator.isValidHorizontalMovement(board, curPosX, curPosY, newPosX, newPosY);
+			boolean isValidVertical = TwoDimensionMovementsValidator.isValidVerticalMovement(board, curPosX, curPosY, newPosX, newPosY);
 			
-			AbstractTwoDimensionalPiece piece = board.getBoard()[newPosX][newPosY].getPiece();
-			if (piece != null) {
-				if (piece.getOrdinal().equals(this.getOrdinal())) {
-					return false;
-				}
-			}
-			
-			boolean north = diffX == 0 && diffY > 0 ? true : false;
-			boolean south = diffX == 0 && diffY < 0 ? true : false;
-			boolean east = diffX > 0 && diffY == 0 ? true : false;
-			boolean west = diffX < 0 && diffY == 0 ? true : false;
-			
-			if (north) {
-				for (int i = this.getPosY(); i < newPosY; i++) {
-					if (i != this.getPosY() && board.getBoard()[newPosX][i] != null) {
-						return false;
-					}
-				}
-				return true;
-			} else if (south) {
-				for (int i = newPosY; i < this.getPosY(); i++) {
-					if (i != newPosY && board.getBoard()[newPosX][i] != null) {
-						return false;
-					}
-				}
-				return true;
-			} else if (east) {
-				for (int i = this.getPosX(); i < newPosX; i++) {
-					if (i != this.getPosX() && board.getBoard()[i][newPosY] != null) {
-						return false;
-					}
-				}
-				return true;
-			} else if (west) {
-				for (int i = newPosX; i < this.getPosX(); i++) {
-					if (i != newPosX && board.getBoard()[i][newPosY] != null) {
-						return false;
-					}
-				}
-				return true;
-			} else {
-				return false;			
-			}
+			return isValidHorizontal || isValidVertical;
 		}
 	}
 	

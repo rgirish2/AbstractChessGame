@@ -60,6 +60,7 @@ public abstract class AbstractPiece {
 	
 	/**
 	 * Each piece is associated with a unicode value that is used to render it on the view.
+	 * This could be null if new pieces are created which do not have a standard unicode representation.
 	 * @return The string representing the unicode value for this piece. 
 	 */
 	public String getUnicodeValue() {

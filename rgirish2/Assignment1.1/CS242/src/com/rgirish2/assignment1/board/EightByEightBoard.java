@@ -1,5 +1,6 @@
 package com.rgirish2.assignment1.board;
 
+import java.awt.Color;
 import java.util.List;
 
 import com.rgirish2.assignment1.piece.AbstractPieceSet;
@@ -10,7 +11,6 @@ import com.rgirish2.assignment1.piece.NormalPieceSet;
 import com.rgirish2.assignment1.piece.PawnPiece;
 import com.rgirish2.assignment1.piece.QueenPiece;
 import com.rgirish2.assignment1.piece.RookPiece;
-import com.rgirish2.assignment1.tile.Colors;
 import com.rgirish2.assignment1.tile.SquareTile;
 
 /**
@@ -39,16 +39,16 @@ public class EightByEightBoard extends AbstractSquareBoard {
 	public void buildBoard(List<AbstractPieceSet> pieceSet) {
 		boolean flag = false;
 		for (int i = 0; i < 8; i++) {
-			Colors color = Colors.WHITE;
+			Color color = Color.WHITE;
 			if (flag) {
-				color = Colors.BLACK;
+				color = Color.BLACK;
 				flag = !flag;
 			} else {
 				flag = !flag;
 			}
 			for (int j = 0; j < 8; j++) {
 				this.board[j][i] = new SquareTile(null, color);
-				color = color.equals(Colors.BLACK) ? Colors.WHITE : Colors.BLACK;
+				color = color.equals(Color.BLACK) ? Color.WHITE : Color.BLACK;
 			}
 		}
 		
@@ -108,10 +108,10 @@ public class EightByEightBoard extends AbstractSquareBoard {
 		StringBuilder builder = new StringBuilder();
 		for (int i = 0; i < this.dimensions.get(0); i++) {
 			for (int j = 0; j < this.dimensions.get(1); j++) {
-				if (this.board[i][j] == null) {
+				if (this.board[j][i] == null) {
 					builder.append("X");
 				} else {
-					builder.append(this.board[i][j]);
+					builder.append(this.board[j][i]);
 				}
 				builder.append("\t");
 			}
