@@ -11,7 +11,7 @@ public class PawnPiece extends AbstractTwoDimensionalPiece {
 	private boolean isFirstMove = true;
 	
 	public PawnPiece(String playerName, int posX, int posY, NormalPlayerOrdinal ordinal) {
-		super(playerName, posX, posY, PieceType.PAWN, ordinal);
+		super(playerName, posX, posY, PieceType.PAWN, ordinal, ordinal.equals(NormalPlayerOrdinal.ONE) ? PiecesUnicode.WHITEPAWN : PiecesUnicode.BLACKPAWN);
 	}
 	
 	/**

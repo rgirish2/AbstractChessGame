@@ -10,7 +10,7 @@ import com.rgirish2.assignment1.board.AbstractTwoDimensionalBoard;
 public class QueenPiece extends AbstractTwoDimensionalPiece {
 
 	public QueenPiece(String playerName, int posX, int posY, NormalPlayerOrdinal ordinal) {
-		super(playerName, posX, posY, PieceType.QUEEN, ordinal);
+		super(playerName, posX, posY, PieceType.QUEEN, ordinal, ordinal.equals(NormalPlayerOrdinal.ONE) ? PiecesUnicode.WHITEQUEEN : PiecesUnicode.BLACKQUEEN);
 	}
 	
 	/**

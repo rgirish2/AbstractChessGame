@@ -15,12 +15,14 @@ public abstract class AbstractPiece {
 	protected final int dimensions;
 	protected final String playerName;
 	protected final PieceType pieceType;
+	protected final String unicodeValue;
 	
-	public AbstractPiece(int dimensions, String playerName, PieceType pieceType) {
+	public AbstractPiece(int dimensions, String playerName, PieceType pieceType, String unicodeValue) {
 		this.dimensions = dimensions;
 		this.uniqueID = UUID.randomUUID().toString();
 		this.playerName = playerName;
 		this.pieceType = pieceType;
+		this.unicodeValue = unicodeValue;
 	}
 	
 	/**
@@ -54,6 +56,14 @@ public abstract class AbstractPiece {
 	 */
 	public String getUniqueID() {
 		return this.uniqueID;
+	}
+	
+	/**
+	 * Each piece is associated with a unicode value that is used to render it on the view.
+	 * @return The string representing the unicode value for this piece. 
+	 */
+	public String getUnicodeValue() {
+		return this.unicodeValue;
 	}
 	
 	/**

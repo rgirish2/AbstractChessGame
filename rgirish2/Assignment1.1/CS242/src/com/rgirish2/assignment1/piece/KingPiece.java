@@ -10,7 +10,7 @@ import com.rgirish2.assignment1.board.AbstractTwoDimensionalBoard;
 public class KingPiece extends AbstractTwoDimensionalPiece {
 
 	public KingPiece(String playerName, int posX, int posY, NormalPlayerOrdinal ordinal) {
-		super(playerName, posX, posY, PieceType.KING, ordinal);
+		super(playerName, posX, posY, PieceType.KING, ordinal, ordinal.equals(NormalPlayerOrdinal.ONE) ? PiecesUnicode.WHITEKING : PiecesUnicode.BLACKKING);
 	}
 	
 	/**

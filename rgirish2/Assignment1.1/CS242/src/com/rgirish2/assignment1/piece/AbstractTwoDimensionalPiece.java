@@ -17,8 +17,8 @@ public abstract class AbstractTwoDimensionalPiece extends AbstractPiece {
 	private int posX;
 	private int posY;
 	
-	public AbstractTwoDimensionalPiece(String playerName, int posX, int posY, PieceType pieceType, NormalPlayerOrdinal ordinal) {
-		super(2, playerName, pieceType);
+	public AbstractTwoDimensionalPiece(String playerName, int posX, int posY, PieceType pieceType, NormalPlayerOrdinal ordinal, String unicodeValue) {
+		super(2, playerName, pieceType, unicodeValue);
 		this.setPosX(posX);
 		this.setPosY(posY);
 		this.ordinal = ordinal;
