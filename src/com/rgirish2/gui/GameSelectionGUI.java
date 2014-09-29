@@ -1,4 +1,4 @@
-package com.rgirish2.assignment1.gui;
+package com.rgirish2.gui;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;

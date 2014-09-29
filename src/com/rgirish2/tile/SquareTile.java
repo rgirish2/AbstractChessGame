@@ -1,4 +1,4 @@
-package com.rgirish2.assignment1.tile;
+package com.rgirish2.tile;
 
 import java.awt.Color;
 

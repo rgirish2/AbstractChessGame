@@ -1,4 +1,4 @@
-package com.rgirish2.assignment1.piece;
+package com.rgirish2.piece;
 
 import java.util.ArrayList;
 import java.util.List;

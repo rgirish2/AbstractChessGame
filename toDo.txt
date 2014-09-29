@@ -1,6 +1,5 @@
-Implement move logic for more pieces.
 Get rid of posX, posY fields from a 2-D field. Can implement the isValidMove() by passing in the currentX and currentY to the piece.
 Change the project build requirements to move tst folder from src path to tst path in eclipse.
-Move this to Bitbucket or github and integrate with your page.
 Could use spring as the framework, if moving towards a webapp.
 Use maven/ant/gradle as the build system.
+If moving to github, try using Travis CI with the build tool.

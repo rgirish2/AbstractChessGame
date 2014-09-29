@@ -1,4 +1,4 @@
-package com.rgirish2.assignment1.piece;
+package com.rgirish2.piece;
 
 import com.rgirish2.assignment1.board.AbstractTwoDimensionalBoard;
 import com.rgirish2.assignment1.movementValidity.TwoDimensionMovementsValidator;

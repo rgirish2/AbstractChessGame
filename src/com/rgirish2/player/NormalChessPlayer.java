@@ -1,4 +1,4 @@
-package com.rgirish2.assignment1.player;
+package com.rgirish2.player;
 
 import com.rgirish2.assignment1.piece.NormalPieceSet;
 import com.rgirish2.assignment1.piece.NormalPlayerOrdinal;

@@ -1,4 +1,4 @@
-package com.rgirish2.assignment1.gui;
+package com.rgirish2.gui;
 
 import java.awt.Font;
 import java.awt.GridLayout;

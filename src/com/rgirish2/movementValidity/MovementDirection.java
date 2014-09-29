@@ -1,4 +1,4 @@
-package com.rgirish2.assignment1.movementValidity;
+package com.rgirish2.movementValidity;
 
 /**
  * Enum representing all the possible movements in a 2 dimensional normal chess game.

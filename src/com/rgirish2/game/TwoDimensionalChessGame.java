@@ -1,4 +1,4 @@
-package com.rgirish2.assignment1.game;
+package com.rgirish2.game;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;

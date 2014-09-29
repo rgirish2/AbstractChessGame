@@ -1,4 +1,4 @@
-package com.rgirish2.assignment1.board;
+package com.rgirish2.board;
 
 /**
  * A rectangular representation of a two dimensional chess board.

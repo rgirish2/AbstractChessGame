@@ -1,4 +1,4 @@
-package com.rgirish2.assignment1.piece;
+package com.rgirish2.piece;
 
 /**
  * Ordinal values for players in this chess game. Presently only ONE and TWO.

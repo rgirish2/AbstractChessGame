@@ -1,4 +1,4 @@
-package com.rgirish2.assignment1.piece;
+package com.rgirish2.piece;
 
 /**
  * A class that contains all the unicode values of the normal chess pieces.

@@ -1,4 +1,4 @@
-package com.rgirish2.assignment1.piece;
+package com.rgirish2.piece;
 
 /**
  * Super class for the piece set. A piece set is just another layer

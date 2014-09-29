@@ -1,4 +1,4 @@
-package com.rgirish2.assignment1.controller;
+package com.rgirish2.controller;
 
 import com.rgirish2.assignment1.game.TwoDimensionalChessGame;
 import com.rgirish2.assignment1.gui.EightByEightBoardGUI;
