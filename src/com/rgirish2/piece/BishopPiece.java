@@ -26,8 +26,11 @@ public class BishopPiece extends AbstractTwoDimensionalPiece {
 		int curPosX = this.getPosX();
 		int curPosY = this.getPosY();
 		
-		boolean isValidDiagonal = TwoDimensionMovementsValidator.isValidDiagonalMovement(board, curPosX, curPosY, newPosX, newPosY);
-		
-		return isValidDiagonal;
+		try {
+			boolean isValidDiagonal = TwoDimensionMovementsValidator.isValidDiagonalMovement(board, curPosX, curPosY, newPosX, newPosY);
+			return isValidDiagonal;
+		} catch (NullPointerException e) {
+			return false;
+		}
 	}
 }

@@ -23,25 +23,26 @@ public class KingPiece extends AbstractTwoDimensionalPiece {
 	 */
 	@Override
 	public boolean isValidMove(AbstractTwoDimensionalBoard board, int newPosX, int newPosY) {
-		
-		if (!TwoDimensionMovementsValidator.isWithinRange(board, this.getPosX(), this.getPosY(), newPosX, newPosY)) {
-			return false;
-		} else if (isCastlingMove(board, newPosX, newPosY)) {
-			return true;
-		} else {
-			int diffX = Math.abs(newPosX - this.getPosX());
-			int diffY = Math.abs(newPosY - this.getPosY());
-			
-			if (diffX == 1 && diffY == 1) {
-				if (!board.getBoard()[newPosX][newPosY].isMarked()) {
-					if (board.getBoard()[newPosX][newPosY].getPiece() != null) {
-						if (board.getBoard()[newPosX][newPosY].getPiece().getOrdinal() != this.getOrdinal()) {
-							return true;
+		try {
+			if (isCastlingMove(board, newPosX, newPosY)) {
+				return true;
+			} else if (TwoDimensionMovementsValidator.isWithinRange(board, this.getPosX(), this.getPosY(), newPosX, newPosY)) {
+				int diffX = Math.abs(newPosX - this.getPosX());
+				int diffY = Math.abs(newPosY - this.getPosY());
+				
+				if ((diffX == 1 && diffY == 1) || (diffX == 0 && diffY == 1) || (diffX == 1 && diffY == 0)) {
+					if (!board.getBoard()[newPosX][newPosY].isMarked()) {
+						if (board.getBoard()[newPosX][newPosY].getPiece() != null) {
+							if (board.getBoard()[newPosX][newPosY].getPiece().getOrdinal() != this.getOrdinal()) {
+								return true;
+							} else {
+								return false;
+							}
 						} else {
-							return false;
+							return true;
 						}
 					} else {
-						return true;
+						return false;
 					}
 				} else {
 					return false;
@@ -49,6 +50,8 @@ public class KingPiece extends AbstractTwoDimensionalPiece {
 			} else {
 				return false;
 			}
+		} catch (NullPointerException e) {
+			return false;
 		}
 	}
 	

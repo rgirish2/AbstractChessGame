@@ -46,7 +46,7 @@ public class TwoDimensionMovementsValidator {
 					}
 					return true;
 				} else if (south) {
-					for (int y = curPosY; y > newPosX; y--) {
+					for (int y = curPosY; y > newPosY; y--) {
 						if (y != curPosY && board.getBoard()[curPosX][y].getPiece() != null) {
 							return false;
 						}

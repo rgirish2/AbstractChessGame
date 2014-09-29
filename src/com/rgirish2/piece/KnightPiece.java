@@ -23,25 +23,29 @@ public class KnightPiece extends AbstractTwoDimensionalPiece {
 	 */
 	@Override
 	public boolean isValidMove(AbstractTwoDimensionalBoard board, int newPosX, int newPosY) {
-		if (TwoDimensionMovementsValidator.isWithinRange(board, this.getPosX(), this.getPosY(), newPosX, newPosY)) {
-			int diffX = Math.abs(newPosX - this.getPosX());
-			int diffY = Math.abs(newPosY - this.getPosY());
-			
-			if ((diffX == 1 && diffY == 2) || (diffX == 2 && diffY == 1)) {
-				AbstractTwoDimensionalPiece piece = board.getBoard()[newPosX][newPosY].getPiece();
-				if (piece != null) {
-					if (!piece.getOrdinal().equals(this.getOrdinal())) {
-						return true;
+		try {
+			if (TwoDimensionMovementsValidator.isWithinRange(board, this.getPosX(), this.getPosY(), newPosX, newPosY)) {
+				int diffX = Math.abs(newPosX - this.getPosX());
+				int diffY = Math.abs(newPosY - this.getPosY());
+				
+				if ((diffX == 1 && diffY == 2) || (diffX == 2 && diffY == 1)) {
+					AbstractTwoDimensionalPiece piece = board.getBoard()[newPosX][newPosY].getPiece();
+					if (piece != null) {
+						if (!piece.getOrdinal().equals(this.getOrdinal())) {
+							return true;
+						} else {
+							return false;
+						}
 					} else {
-						return false;
+						return true;
 					}
 				} else {
-					return true;
+					return false;
 				}
 			} else {
 				return false;
 			}
-		} else {
+		} catch (NullPointerException e) {
 			return false;
 		}
 	}

@@ -74,6 +74,6 @@ public abstract class AbstractTile {
 	
 	@Override
 	public String toString() {
-		return this.piece == null? "\tX" : this.piece.toString();
+		return this.piece == null? "" : this.piece.toString();
 	}
 }

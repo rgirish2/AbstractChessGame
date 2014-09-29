@@ -26,10 +26,14 @@ public class QueenPiece extends AbstractTwoDimensionalPiece {
 		int curPosX = this.getPosX();
 		int curPosY = this.getPosY();
 		
-		boolean isValidHorizontal = TwoDimensionMovementsValidator.isValidHorizontalMovement(board, curPosX, curPosY, newPosX, newPosY);
-		boolean isValidVertical = TwoDimensionMovementsValidator.isValidVerticalMovement(board, curPosX, curPosY, newPosX, newPosY);
-		boolean isValidDiagonal = TwoDimensionMovementsValidator.isValidDiagonalMovement(board, curPosX, curPosY, newPosX, newPosY);
-		
-		return isValidHorizontal || isValidVertical || isValidDiagonal;
+		try {
+			boolean isValidHorizontal = TwoDimensionMovementsValidator.isValidHorizontalMovement(board, curPosX, curPosY, newPosX, newPosY);
+			boolean isValidVertical = TwoDimensionMovementsValidator.isValidVerticalMovement(board, curPosX, curPosY, newPosX, newPosY);
+			boolean isValidDiagonal = TwoDimensionMovementsValidator.isValidDiagonalMovement(board, curPosX, curPosY, newPosX, newPosY);
+			
+			return isValidHorizontal || isValidVertical || isValidDiagonal;
+		} catch (NullPointerException e) {
+			return false;
+		}
 	}
 }

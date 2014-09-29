@@ -8,10 +8,10 @@ import com.rgirish2.assignment1.board.AbstractTwoDimensionalBoard;
  * @author Rishi Girish(rgirish2ATillinoisDOTedu)
  *
  */
-public class AbraPiece extends AbstractTwoDimensionalPiece {
+public class KadabraPiece extends AbstractTwoDimensionalPiece {
 
-	public AbraPiece(String playerName, int posX, int posY, NormalPlayerOrdinal ordinal) {
-		super(playerName, posX, posY, PieceType.ABRA, ordinal, null);
+	public KadabraPiece(String playerName, int posX, int posY, NormalPlayerOrdinal ordinal) {
+		super(playerName, posX, posY, PieceType.KADABRA, ordinal, "KADABRA");
 	}
 
 	/**
@@ -32,7 +32,7 @@ public class AbraPiece extends AbstractTwoDimensionalPiece {
 		} else {
 			if (board.getBoard()[newPosX][newPosY] != null) {
 				AbstractTwoDimensionalPiece piece = board.getBoard()[newPosX][newPosY].getPiece();
-				if (piece.getPieceType().equals(PieceType.KING) && !piece.getOrdinal().equals(this.getOrdinal())) {
+				if (piece.getPieceType().equals(PieceType.KING) && piece.getOrdinal().equals(this.getOrdinal())) {
 					return true;
 				}
 			}

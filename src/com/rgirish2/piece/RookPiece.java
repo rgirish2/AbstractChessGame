@@ -28,11 +28,14 @@ public class RookPiece extends AbstractTwoDimensionalPiece {
 		} else {
 			int curPosX = this.getPosX();
 			int curPosY = this.getPosY();
-			
-			boolean isValidHorizontal = TwoDimensionMovementsValidator.isValidHorizontalMovement(board, curPosX, curPosY, newPosX, newPosY);
-			boolean isValidVertical = TwoDimensionMovementsValidator.isValidVerticalMovement(board, curPosX, curPosY, newPosX, newPosY);
-			
-			return isValidHorizontal || isValidVertical;
+			try {
+				boolean isValidHorizontal = TwoDimensionMovementsValidator.isValidHorizontalMovement(board, curPosX, curPosY, newPosX, newPosY);
+				boolean isValidVertical = TwoDimensionMovementsValidator.isValidVerticalMovement(board, curPosX, curPosY, newPosX, newPosY);
+				
+				return isValidHorizontal || isValidVertical;
+			} catch (NullPointerException e) {
+				return false;
+			}
 		}
 	}
 	

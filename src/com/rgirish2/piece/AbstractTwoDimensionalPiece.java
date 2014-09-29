@@ -74,17 +74,10 @@ public abstract class AbstractTwoDimensionalPiece extends AbstractPiece {
 	public abstract boolean isValidMove(AbstractTwoDimensionalBoard board, int newPosX, int newPosY);
 	
 	/**
-	 * @return The string representation of this piece object of the type PIECETYPE (posX, posY)
+	 * @return The string representation of this piece object of the type Uni-code value of the piece.
 	 */
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append(this.pieceType);
-		builder.append(": (");
-		builder.append(this.posX);
-		builder.append(", ");
-		builder.append(this.posY);
-		builder.append(")");
-		return builder.toString();
+		return this.unicodeValue;
 	}
 }

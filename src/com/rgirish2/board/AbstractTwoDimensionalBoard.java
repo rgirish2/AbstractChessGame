@@ -18,9 +18,9 @@ public abstract class AbstractTwoDimensionalBoard extends AbstractBoard {
 	
 	/**
 	 * Constructor for a chess board in two dimensions.
-	 * @param dimensionOne
-	 * @param dimensionTwo
-	 * @param playerCount
+	 * @param dimensionOne The first dimension of this 2-dimensional chess board.
+	 * @param dimensionTwo The second dimension of this 2-dimensional chess board.
+	 * @param playerCount The number of players playing this game.
 	 */
 	public AbstractTwoDimensionalBoard(int dimensionOne, int dimensionTwo, int playerCount) {
 		this.dimensionCount = currentDimensionCount;
@@ -65,10 +65,9 @@ public abstract class AbstractTwoDimensionalBoard extends AbstractBoard {
 	 * @param newX The new X position of the tile.
 	 * @param newY The new Y position of the tile.
 	 * @throws Exception Throws exception on invalid moves.
-	 */	
-	//TODO: Implement custom exception handling and propagating the exception upstream. Add better exception messages.
+	 */
 	public boolean moveTile (int oldX, int oldY, int newX, int newY) {
-		if (this.board == null || this.board[oldX][oldY] != null) {
+		if (this.board != null || this.board[oldX][oldY] != null) {
 			AbstractTwoDimensionalPiece piece = board[oldX][oldY].getPiece();
 			if (piece != null) {
 				try {
@@ -87,18 +86,15 @@ public abstract class AbstractTwoDimensionalBoard extends AbstractBoard {
 						piece = null;
 						return true;
 					} else {
-//						throw new Exception("Incorrect movement for the piece.");
 						return false;
 					}
 				} catch (NullPointerException e) {
 					return false;
 				}
 			} else {
-//				throw new Exception("Current tile is empty. Incorrect movement request.");
 				return false;
 			}
 		} else {
-//			throw new Exception("Uninitialized board. Cannot make this request.");
 			return false;
 		}
 	}
